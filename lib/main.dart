@@ -34,7 +34,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void nextQuestionNumber() {
     questionNumber++;
-    if (questionNumber >= quizBrain.questions.length) {
+    if (questionNumber >= quizBrain.getNumberOfQuestions()) {
       questionNumber = 0;
     }
   }
@@ -59,7 +59,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.questions[questionNumber].questionText,
+                quizBrain.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -84,8 +84,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (quizBrain.questions[questionNumber].questionAnswer ==
-                      false) {
+                  if (quizBrain.getQuestionAnswer(questionNumber) == false) {
                     addCorrectIcon();
                   } else {
                     addWrongIcon();
@@ -110,8 +109,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (quizBrain.questions[questionNumber].questionAnswer ==
-                      false) {
+                  if (quizBrain.getQuestionAnswer(questionNumber) == false) {
                     addCorrectIcon();
                   } else {
                     addWrongIcon();
